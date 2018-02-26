@@ -51,17 +51,15 @@ subject_test <- fread(file.path(path, "UCI HAR Dataset/test/subject_test.txt")
                       , col.names = c("subject_num"))
 test <- cbind(subject_test, activity_test, test)
 
-# merge datasets
-combined <- rbind(x_train, test)
+# Mrge datasets
+combined <- cbind(x_train, test)
 
-# Convert classLabels to activityName basically. More explicit. 
-combined[["Activity"]] <- factor(combined[, activity]
-                              , levels = activity_labels[["class_labels"]]
-                              , labels = activity_labels[["activity_name"]])
+id_labels   = c("subject_num", "activity_ID", "activity_label")
+data_labels = setdiff(colnames(data), id_labels)
+melt_data      = melt(data, id = id_labels, measure.vars = data_labels)
 
-combined[["subject_num"]] <- as.factor(combined[, SubjectNum])
-combined <- reshape2::melt(data = combined, id = c("subject_num", "activity"))
-combined <- reshape2::dcast(data = combined, subject_num + activity ~ variable, fun.aggregate = mean)
+# Apply mean function to dataset using dcast function
+tidy_data   = dcast(melt_data, subject_num + activity_label ~ variable, mean)
 
-data.table::fwrite(x = combined, file = "tidyData.txt", quote = FALSE)
+write.table(tidy_data, file = "./tidy_data.txt")
 
