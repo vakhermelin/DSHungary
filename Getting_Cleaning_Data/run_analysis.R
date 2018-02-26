@@ -51,7 +51,7 @@ subject_test <- fread(file.path(path, "UCI HAR Dataset/test/subject_test.txt")
                       , col.names = c("subject_num"))
 test <- cbind(subject_test, activity_test, test)
 
-# Mrge datasets
+# Merge datasets
 combined <- cbind(x_train, test)
 
 id_labels   = c("subject_num", "activity_ID", "activity_label")
