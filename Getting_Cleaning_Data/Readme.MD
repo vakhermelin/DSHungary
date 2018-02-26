@@ -11,4 +11,4 @@ Analysis R Script (https://github.com/vakhermelin/datasciencecoursera/blob/maste
 
 Codebook (https://github.com/vakhermelin/datasciencecoursera/blob/master/Getting_Cleaning_Data/CodeBook.MD)
 
-README (https://github.com/mGalarnyk/datasciencecoursera/blob/master/3_Getting_and_Cleaning_Data/projects/README.md "README.md")
+README (https://github.com/vakhermelin/datasciencecoursera/blob/master/Getting_Cleaning_Data/Readme.MD)
